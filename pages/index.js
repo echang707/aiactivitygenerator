@@ -67,7 +67,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-amber-50 flex items-center justify-center px-4 py-12">
+    <div
+      className="min-h-screen flex items-center justify-center px-4 py-12"
+      style={{ backgroundColor: '#F5F0E4' }}
+    >
     <div className="w-full max-w-4xl bg-white rounded-xl shadow-xl p-10 space-y-6 border border-gray-100">  
         <h1 className="text-3xl font-semibold text-center">Find a Fun Learning Activity</h1>
   
