@@ -39,7 +39,7 @@ export default function Home() {
 
         <div className="space-y-4">
           <div>
-            <label className="block font-medium">Child's Age:</label>
+            <label className="block font-medium">Child&apos;s Age:</label>
             <input type="text" name="age" onChange={handleChange} className="w-full border px-3 py-2 rounded" />
           </div>
 
