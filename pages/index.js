@@ -1,4 +1,3 @@
-// pages/index.js
 import { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 
@@ -34,30 +33,69 @@ export default function Home() {
   };
 
   return (
-    <main style={{ padding: '2rem' }}>
-      <h1>🧠 AI Activity Generator</h1>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="max-w-xl w-full bg-white rounded-xl shadow-lg p-6">
+        <h1 className="text-2xl font-bold mb-4 text-center">Find a Fun Learning Activity</h1>
 
-      <input name="age" placeholder="Age" onChange={handleChange} />
-      <input name="difficulty" placeholder="Difficulty" onChange={handleChange} />
-      <input name="category" placeholder="Category" onChange={handleChange} />
-      <input name="skills" placeholder="Skills Developed" onChange={handleChange} />
-      <input name="learning_style" placeholder="Learning Style" onChange={handleChange} />
-      <button onClick={handleSubmit}>Generate Activity</button>
+        <div className="space-y-4">
+          <div>
+            <label className="block font-medium">Child's Age:</label>
+            <input type="text" name="age" onChange={handleChange} className="w-full border px-3 py-2 rounded" />
+          </div>
 
-      {result && result.type === "static" && (
-        <div style={{ marginTop: '2rem' }}>
-          <h2>{result.result["Activity Name"]}</h2>
-          <p><strong>Materials:</strong> {result.result["Materials Needed"]}</p>
-          <p><a href={result.result["Links to Activities"]} target="_blank">Go to Activity</a></p>
+          <div>
+            <label className="block font-medium">Difficulty Level:</label>
+            <input type="text" name="difficulty" onChange={handleChange} className="w-full border px-3 py-2 rounded" />
+          </div>
+
+          <div>
+            <label className="block font-medium">Category:</label>
+            <input type="text" name="category" onChange={handleChange} className="w-full border px-3 py-2 rounded" />
+          </div>
+
+          <div>
+            <label className="block font-medium">Skills Developed:</label>
+            <input type="text" name="skills" onChange={handleChange} className="w-full border px-3 py-2 rounded" />
+          </div>
+
+          <div>
+            <label className="block font-medium">Learning Style:</label>
+            <input type="text" name="learning_style" onChange={handleChange} className="w-full border px-3 py-2 rounded" />
+          </div>
+
+          <button
+            onClick={handleSubmit}
+            className="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700"
+          >
+            Generate Activity
+          </button>
         </div>
-      )}
 
-      {result && result.type === "ai" && (
-        <div style={{ marginTop: '2rem' }}>
-          <h2>AI-Generated Activity</h2>
-          <p>{result.result}</p>
-        </div>
-      )}
-    </main>
+        {result && result.type === 'static' && (
+          <div className="mt-6">
+            <h2 className="text-xl font-bold mb-2">{result.result['Activity Name']}</h2>
+            <p className="mb-2"><strong>Description:</strong> {result.result['Description']}</p>
+            <p className="mb-2"><strong>Materials Needed:</strong> {result.result['Materials Needed']}</p>
+            {result.result['Links to Activities'] && (
+              <a
+                href={result.result['Links to Activities']}
+                className="text-blue-500 underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Activity
+              </a>
+            )}
+          </div>
+        )}
+
+        {result && result.type === 'ai' && (
+          <div className="mt-6">
+            <h2 className="text-xl font-bold mb-2">AI-Generated Activity</h2>
+            <p>{result.result}</p>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
