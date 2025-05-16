@@ -24,8 +24,31 @@ export default async function handler(req, res) {
   }
 
   // Fallback to OpenAI
-  const prompt = `Suggest a fun learning activity for a ${age}-year-old that is ${difficulty} difficulty, 
-  related to ${category}, helps develop ${skills}, and works best for a ${learning_style} learner.`;
+  const prompt = `
+  Create a detailed and fun educational activity based on the following inputs:
+  
+  - Age: ${age}
+  - Difficulty: ${difficulty}
+  - Category: ${category}
+  - Skills: ${skills}
+  - Learning Style: ${learning_style}
+  
+  Respond in the following structured format:
+  
+  Activity: [Name of the activity]
+  
+  Materials:
+  [List of materials in numbered format]
+  
+  Instructions:
+  [Step-by-step numbered instructions]
+  
+  Learning Outcomes:
+  [List what the child will gain]
+  
+  Helpful Note:
+  [Provide a warm, encouraging note to parents on how to use or adapt the activity]
+  `;
 
   try {
     const response = await openai.chat.completions.create({
