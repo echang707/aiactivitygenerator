@@ -43,7 +43,7 @@ export default function Home() {
           };
 
           setDropdowns({
-            difficulty: uniqueCleanValues('Difficulty Level'),
+            difficulty: ['Easy', 'Medium', 'Hard'], // manually ordered
             category: uniqueCleanValues('Category'),
             skills: uniqueCleanValues('Skills Developed'),
             learning_style: uniqueCleanValues('Learning Style'),
